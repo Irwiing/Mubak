@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mubak", "Mubak\Mubak.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{CFF87527-0D7B-48F0-94EA-E107C94D2FD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "Context\Dal.csproj", "{41FD23DA-C9FC-4613-B00A-54895CD91273}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Context", "Context\Context.csproj", "{41FD23DA-C9FC-4613-B00A-54895CD91273}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{00D5E95F-9DDB-46A1-B75E-82C8B4304B0B}"
 EndProject

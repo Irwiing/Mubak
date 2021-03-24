@@ -5,7 +5,7 @@ namespace Context
 {
     public class ItemProductContext : DbContext
     {
-        public ItemProductContext() : base("ItemProductContext")
+        public ItemProductContext() : base("MubakContext")
         {
 
         }
