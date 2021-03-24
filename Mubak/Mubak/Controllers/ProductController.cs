@@ -11,68 +11,77 @@ namespace Mubak.Controllers
     public class ProductController : Controller
     {
         private ProductContext _ctxProduct = new ProductContext();
+        // GET: ItemProduct
         public ActionResult Index()
         {
-            var products = _ctxProduct.Products.ToList();
-            return View(products);
+            var lst = _ctxProduct.Products.ToList();
+            return View(lst);
         }
 
         public ActionResult Create()
         {
+            ViewBag.CategoryList = new SelectList(_ctxProduct.Categories, "Id", "Description", "Id");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product newProduct)
+        public ActionResult Create([Bind(Include = "Id, Description, Model, Brand, UnitaryPrice, Category")] Product product)
         {
             if (ModelState.IsValid)
             {
-                _ctxProduct.Products.Add(newProduct);
+                product.Category = _ctxProduct.Categories.First(ip => ip.Id == product.Category.Id);
+                _ctxProduct.Products.Add(product);
                 _ctxProduct.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(newProduct);
+            return View(product);
         }
+
         public ActionResult Edit(int id)
         {
-            var selectedProduct = _ctxProduct.Products.First(category => category.Id == id);
-            return View(selectedProduct);
+            var product = _ctxProduct.Products.First(d => d.Id == id);
+            ViewBag.CategoryList = new SelectList(_ctxProduct.Categories, "Id", "Description", product.Id);
+            return View(product);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product updatedProduct)
+        public ActionResult Edit([Bind(Include = "Id, Product, UnitaryValue, Amount, TotalValue")] Product product)
         {
             if (ModelState.IsValid)
             {
-                var selectedProduct = _ctxProduct.Products.First(category => category.Id == updatedProduct.Id);
-                selectedProduct.Description = updatedProduct.Description;
+                Product productUpdate = _ctxProduct.Products.First(ip => ip.Id == product.Id);
+                productUpdate.Category = _ctxProduct.Categories.First(p => p.Id == product.Category.Id);
+                productUpdate.Model = product.Model;
+                productUpdate.Brand = product.Brand;
+                productUpdate.UnitaryPrice = product.UnitaryPrice;
+                productUpdate.Description = product.Description;
                 _ctxProduct.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(updatedProduct);
+            return View(product);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Detail(int id)
         {
-            var selectedProduct = _ctxProduct.Products.First(category => category.Id == id);
-            return View(selectedProduct);
+            return View(_ctxProduct.Products.First(ip => ip.Id == id));
         }
 
         public ActionResult Delete(int id)
         {
-            var selectedProduct = _ctxProduct.Products.First(category => category.Id == id);
-            return View(selectedProduct);
+            var product = _ctxProduct.Products.First(ip => ip.Id == id);
+            return View(product);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirm(int id)
         {
-            var selectedProduct = _ctxProduct.Products.First(category => category.Id == id);
-            _ctxProduct.Products.Remove(selectedProduct);
+            var product = _ctxProduct.Products.First(ip => ip.Id == id);
+            _ctxProduct.Products.Remove(product);
             _ctxProduct.SaveChanges();
+
             return RedirectToAction("Index");
         }
     }

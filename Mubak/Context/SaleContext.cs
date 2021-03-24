@@ -9,7 +9,8 @@ namespace Context
         {
 
         }
-
+        public DbSet<Payment> Payments { get; set; }
+        //public DbSet<ItemProduct> ItemProducts { get; set; }
         public DbSet<Sale> Sales { get; set; }
     }
 }

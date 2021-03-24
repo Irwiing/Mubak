@@ -21,9 +21,9 @@ namespace Model
 
         public string Name { get; set; }
 
-        public List<Address> Address { get; set; }
+        public virtual List<Address> Address { get; set; }
 
-        public List<Phone> Phone { get; set; }
+        public virtual List<Phone> Phone { get; set; }
 
         public string Permission { get; set; }
 

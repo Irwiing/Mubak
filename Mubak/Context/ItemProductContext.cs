@@ -10,6 +10,7 @@ namespace Context
 
         }
 
+        public DbSet<Product> Products { set; get; }
         public DbSet<ItemProduct> ItemsProducts { set; get; }
     }
 }

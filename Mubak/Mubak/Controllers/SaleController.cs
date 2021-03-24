@@ -12,48 +12,56 @@ namespace Mubak.Controllers
         // GET: Sale
         public ActionResult Index()
         {
-            return View(_ctxSale.Sales.ToList());
+            var lst = _ctxSale.Sales.ToList();
+            return View(lst);
         }
         public ActionResult Create()
         {
+            ViewBag.PaymentList = new SelectList(_ctxSale.Payments, "Id", "Installments", "Id");
+            //ViewBag.ItemProductList = new SelectList(_ctxSale.ItemProducts, "Id", "Description", "Id");
+
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Sale sale)
+        public ActionResult Create([Bind(Include = "Id, Payment, DateSale, Costumer, Items, TotalValue")] Sale sales)
         {
             if (ModelState.IsValid)
             {
-                _ctxSale.Sales.Add(sale);
+                sales.Payment = _ctxSale.Payments.First(ip => ip.Id == sales.Payment.Id);
+                _ctxSale.Sales.Add(sales);
                 _ctxSale.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(sale);
+            return View(sales);
         }
 
         public ActionResult Edit(int id)
         {
-            return View(_ctxSale.Sales.First(s => s.Id == id));
+            var sales = _ctxSale.Sales.First(d => d.Id == id);
+            ViewBag.PaymentList = new SelectList(_ctxSale.Payments, "Id", "Installments", sales.Id);
+            return View(sales);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Sale sale)
+        public ActionResult Edit([Bind(Include = "Id, Payment, DateSale, Costumer, Items, TotalValue")] Sale sales)
         {
             if (ModelState.IsValid)
             {
-                Sale saleUpdate = _ctxSale.Sales.First(s => s.Id == sale.Id);
-                saleUpdate.Items = sale.Items;
-                saleUpdate.Payment = sale.Payment;
-                saleUpdate.DateSale = sale.DateSale;
-                saleUpdate.Costumer = sale.Costumer;
-                saleUpdate.TotalValue = sale.TotalValue;
+                Sale saleUpdate = _ctxSale.Sales.First(ip => ip.Id == sales.Id);
+                saleUpdate.Payment = _ctxSale.Payments.First(p => p.Id == sales.Payment.Id);
+                saleUpdate.DateSale = sales.DateSale;
+                saleUpdate.Costumer = sales.Costumer;
+                saleUpdate.Items = sales.Items;
+                saleUpdate.TotalValue = sales.TotalValue;
                 _ctxSale.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(sale);
+            return View(sales);
         }
+
         public ActionResult Details(int id)
         {
             return View(_ctxSale.Sales.First(s => s.Id == id));
