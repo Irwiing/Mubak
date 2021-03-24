@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Model.Sale>
+﻿@model IEnumerable<Model.Address>
 
 @{
     ViewBag.Title = "Index";
@@ -12,16 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Payment)
+            @Html.DisplayNameFor(model => model.Street)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateSale)
+            @Html.DisplayNameFor(model => model.Neighborhood)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Costumer)
+            @Html.DisplayNameFor(model => model.ZipCode)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TotalValue)
+            @Html.DisplayNameFor(model => model.Locale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Region)
         </th>
         <th></th>
     </tr>
@@ -29,16 +32,19 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Payment)
+            @Html.DisplayFor(modelItem => item.Street)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateSale)
+            @Html.DisplayFor(modelItem => item.Neighborhood)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Costumer)
+            @Html.DisplayFor(modelItem => item.ZipCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TotalValue)
+            @Html.DisplayFor(modelItem => item.Locale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Region)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
