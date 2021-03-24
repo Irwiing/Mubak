@@ -2,24 +2,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Sale
+    public abstract class Payment
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        public Payment Payment { get; set; }
-
-        public DateTime DateSale { get; set; }
-
-        public string Costumer { get; set; }
-
-        public List<ItemProduct> Items { get; set; }
-
-        public decimal TotalValue { get; set; }
-
+        public int Installments { get; set; }
     }
 }
