@@ -9,7 +9,7 @@ namespace Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         public decimal UnitaryValue { get; set; }
 

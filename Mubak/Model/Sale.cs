@@ -11,13 +11,13 @@ namespace Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public Payment Payment { get; set; }
+        public virtual Payment Payment { get; set; }
 
         public DateTime DateSale { get; set; }
 
         public string Costumer { get; set; }
 
-        public List<ItemProduct> Items { get; set; }
+        public virtual List<ItemProduct> Items { get; set; }
 
         public decimal TotalValue { get; set; }
 
