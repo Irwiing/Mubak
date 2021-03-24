@@ -60,10 +60,6 @@
       <Project>{cff87527-0d7b-48f0-94ea-e107c94d2fd5}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Mubak\Mubak.csproj">
-      <Project>{f19df57d-77b7-45cd-9d9f-f3f11f30a5f2}</Project>
-      <Name>Mubak</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
