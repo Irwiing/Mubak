@@ -47,7 +47,7 @@ namespace Mubak.Controllers
                 saleUpdate.Items = sale.Items;
                 saleUpdate.PaymentType = sale.PaymentType;
                 saleUpdate.DateSale = sale.DateSale;
-                saleUpdate.User = sale.User;
+                saleUpdate.Costumer = sale.Costumer;
                 saleUpdate.TotalValue = sale.TotalValue;
                 _ctxSale.SaveChanges();
                 return RedirectToAction("Index");
