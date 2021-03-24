@@ -14,8 +14,21 @@ namespace Context
                 new Sale{
                     Id = 1,
                     PaymentType = "pix",
-                    Items = "item",
-                    User = "User",
+                    Items = new List<ItemProduct>
+                    {
+                        new ItemProduct
+                        {
+                            Id = 1,
+                            Product = new Product{
+                                Id = 1,
+                                Description = "Placa de vídeo"
+                            },  
+                            UnitaryValue = 15,
+                            Amount = 2,
+                            TotalValue = 30
+                        },
+                    },
+                    Costumer = "User",
                     TotalValue = 10,
                     DateSale = DateTime.Now
 
