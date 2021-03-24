@@ -45,7 +45,7 @@ namespace Mubak.Controllers
             {
                 Sale saleUpdate = _ctxSale.Sales.First(s => s.Id == sale.Id);
                 saleUpdate.Items = sale.Items;
-                saleUpdate.PaymentType = sale.PaymentType;
+                saleUpdate.Payment = sale.Payment;
                 saleUpdate.DateSale = sale.DateSale;
                 saleUpdate.Costumer = sale.Costumer;
                 saleUpdate.TotalValue = sale.TotalValue;
