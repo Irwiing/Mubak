@@ -55,6 +55,8 @@
     <Compile Include="CategoryInitializer.cs" />
     <Compile Include="ProductContext.cs" />
     <Compile Include="ProductInitializer.cs" />
+    <Compile Include="ItemProductContext.cs" />
+    <Compile Include="ItemProductInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
