@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Context
 {
-    class ProductContext : DbContext
+    public class ProductContext : DbContext
     {
         public ProductContext() : base("MubakContext")
         {
