@@ -51,8 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressContext.cs" />
+    <Compile Include="AddressInitializer.cs" />
     <Compile Include="CategoryContext.cs" />
     <Compile Include="CategoryInitializer.cs" />
+    <Compile Include="PhoneContext.cs" />
+    <Compile Include="PhoneInitializer.cs" />
     <Compile Include="ProductContext.cs" />
     <Compile Include="ProductInitializer.cs" />
     <Compile Include="ItemProductContext.cs" />
@@ -60,6 +64,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaleContext.cs" />
     <Compile Include="SaleInitializer.cs" />
+    <Compile Include="UserContext.cs" />
+    <Compile Include="UserInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">
