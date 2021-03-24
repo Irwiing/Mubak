@@ -11,7 +11,7 @@ namespace Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public string PaymentType { get; set; }
+        public Payment Payment { get; set; }
 
         public DateTime DateSale { get; set; }
 

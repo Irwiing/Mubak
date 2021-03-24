@@ -12,7 +12,7 @@ namespace Context
             var sales = new List<Sale>
             {
                 new Sale{
-                    PaymentType = "pix",
+                    Payment = new Pix{ Installments = 1, KeyType = "CPF", KeyValue = "98495198941"},
                     Items = new List<ItemProduct>
                     {
                         new ItemProduct
@@ -38,7 +38,7 @@ namespace Context
 
                 },
                 new Sale{
-                    PaymentType = "Cartao",
+                    Payment = new CreditCard{ Number = "1871951984", Cardholder = "IRWING TESTONE", CVV = "253", ExpirationDate = DateTime.Parse("10/12/2028"), Installments = 5 },
                     Items = new List<ItemProduct>
                     {
                         new ItemProduct
