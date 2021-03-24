@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -169,6 +170,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -186,6 +192,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Context\Dal.csproj">
+      <Project>{41fd23da-c9fc-4613-b00a-54895cd91273}</Project>
+      <Name>Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{cff87527-0d7b-48f0-94ea-e107c94d2fd5}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
