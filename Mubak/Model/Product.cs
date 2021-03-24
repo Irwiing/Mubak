@@ -17,7 +17,7 @@ namespace Model
 
         public decimal UnitaryPrice { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }
