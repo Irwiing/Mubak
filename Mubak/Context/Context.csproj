@@ -55,6 +55,7 @@
     <Compile Include="AddressInitializer.cs" />
     <Compile Include="CategoryContext.cs" />
     <Compile Include="CategoryInitializer.cs" />
+    <Compile Include="PaymentInitializer.cs" />
     <Compile Include="PhoneContext.cs" />
     <Compile Include="PhoneInitializer.cs" />
     <Compile Include="PaymentContext.cs" />
