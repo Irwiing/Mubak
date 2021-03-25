@@ -9,26 +9,47 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark ">
-        <a class="navbar-brand" href="#">
-            <img src="~/Images/Logo-h.svg" width="250" height="50" />
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-dark justify-content-between ">
+        <div class="d-flex">
+            <a class="navbar-brand" href="#">
+                <img src="~/Images/Logo-h.svg" width="250" height="50" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Product", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Criar Produtos", "Create", "Product", null, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Criar Categoria", "Create", "Category", null, new { @class = "nav-link" })</li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Product", null, new { @class = "nav-link" })</li>
+                    @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("Admin")) { 
+                        <li class="nav-item">@Html.ActionLink("Criar Produtos", "Create", "Product", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Criar Categoria", "Create", "Category", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Lista de usuarios", "Index", "User", null, new { @class = "nav-link" })</li>
+                    }
+                </ul>
+                <div class="d-flex text-white">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <h3 class="pr-3">@(HttpContext.Current.User.Identity.Name)</h3>
+                        <h3>
+                            @Html.ActionLink("Logout", "logout", "User", null, new { @class = "btn btn-dark" })
+                        </h3>
+                    }
+                    else
+                    {
+                        <h3>
+                            @Html.ActionLink("Login", "Login", "User", null, new { @class = "btn btn-dark" })
+                        </h3>
+                    }
+                </div>
+            </div>
         </div>
+        
     </nav>
 
     <div class="container body-content">
         @RenderBody()
-        
+
         <footer class="fixed-bottom text-white bg-dark d-flex justify-content-center align-items-center">
             <p>&copy; @DateTime.Now.Year - Mubak by: Irwing, Saulo e Hugo</p>
         </footer>

@@ -127,9 +127,7 @@
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AddressController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\PhoneController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -145,6 +143,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Providers\MubakProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -336,6 +335,7 @@
     <Content Include="Views\Payment\Edit.cshtml" />
     <Content Include="Views\Payment\Details.cshtml" />
     <Content Include="Views\Payment\Delete.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -353,6 +353,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{cff87527-0d7b-48f0-94ea-e107c94d2fd5}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{00d5e95f-9ddb-46a1-b75e-82c8b4304b0b}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

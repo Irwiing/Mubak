@@ -2,14 +2,17 @@
 using System.Web.Mvc;
 using Model;
 using Context;
+using Services;
+using System.Web.Security;
 
 namespace Mubak.Controllers
 {
     public class UserController : Controller
     {
         private UserContext _ctxUser = new UserContext();
+        private UserLogin _serviceUser = new UserLogin();
 
-        // GET: Sale
+        [Authorize(Roles= "Admin")]
         public ActionResult Index()
         {
             return View(_ctxUser.Users.ToList());
@@ -20,7 +23,7 @@ namespace Mubak.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]        
         public ActionResult Create(User user)
         {
             if (ModelState.IsValid)
@@ -31,7 +34,7 @@ namespace Mubak.Controllers
             }
             return View(user);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View(_ctxUser.Users.First(u => u.Id == id));
@@ -39,6 +42,7 @@ namespace Mubak.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(User user)
         {
             if (ModelState.IsValid)
@@ -59,11 +63,12 @@ namespace Mubak.Controllers
             }
             return View(user);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
             return View(_ctxUser.Users.First(u => u.Id == id));
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View(_ctxUser.Users.First(u => u.Id == id));
@@ -71,6 +76,7 @@ namespace Mubak.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
             var user = _ctxUser.Users.First(u => u.Id == id);
@@ -79,5 +85,36 @@ namespace Mubak.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Login()
+        {
+            return View("Login");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user, string returnUrl)
+        {
+            var checkedUser = _serviceUser.CheckUser(user);
+
+            if (checkedUser != null)
+            {
+                FormsAuthentication.SetAuthCookie(checkedUser.Login, false);
+                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                {
+                    return Redirect(returnUrl);
+                }
+                return RedirectToAction("Index", "Product");
+            }
+            ModelState.AddModelError("", "Invalid User/Password");
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Product");
+        }
     }
 }

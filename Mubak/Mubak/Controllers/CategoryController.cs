@@ -16,7 +16,7 @@ namespace Mubak.Controllers
             var categories = _ctxCategory.Categories.ToList();
             return View(categories);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -24,6 +24,7 @@ namespace Mubak.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Category newCategory)
         {
             if (ModelState.IsValid)
@@ -34,6 +35,7 @@ namespace Mubak.Controllers
             }
             return View(newCategory);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var selectedCategory = _ctxCategory.Categories.First(category => category.Id == id);
@@ -42,6 +44,7 @@ namespace Mubak.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Category updatedCategory)
         {
             if (ModelState.IsValid)
@@ -59,7 +62,7 @@ namespace Mubak.Controllers
             var selectedCategory = _ctxCategory.Categories.First(category => category.Id == id);
             return View(selectedCategory);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var selectedCategory = _ctxCategory.Categories.First(category => category.Id == id);
@@ -68,6 +71,7 @@ namespace Mubak.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
             var selectedCategory = _ctxCategory.Categories.First(category => category.Id == id);

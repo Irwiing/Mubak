@@ -16,8 +16,8 @@
                 <h5 class="py-5">@Html.DisplayFor(model => model.Description)</h5>
                 <h3 class="">$@Html.DisplayFor(model => model.UnitaryPrice)</h3>
             </div>
+            @Html.ActionLink("Fale com o vendedor", "Index", null, new { onclick = String.Format("SendMessage('{0}', '{1}', '{2}')", Model.Description, Model.Brand, Model.Model), @class= "text-decoration-none btn btn-success text-white" })
             
-            @Html.ActionLink("Adicionar ao carrinho", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary " })
             
         </div>
     </div>

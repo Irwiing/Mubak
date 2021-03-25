@@ -11,13 +11,14 @@ namespace Mubak.Controllers
     public class ProductController : Controller
     {
         private ProductContext _ctxProduct = new ProductContext();
-        // GET: ItemProduct
+        
         public ActionResult Index()
         {
             var lst = _ctxProduct.Products.ToList();
             return View(lst);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.CategoryList = new SelectList(_ctxProduct.Categories, "Id", "Description", "Id");
@@ -26,6 +27,7 @@ namespace Mubak.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id, Description, Model, Brand, UnitaryPrice, Category")] Product product)
         {
             if (ModelState.IsValid)
@@ -38,6 +40,7 @@ namespace Mubak.Controllers
             return View(product);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var product = _ctxProduct.Products.First(d => d.Id == id);
@@ -47,6 +50,7 @@ namespace Mubak.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id, Product, UnitaryValue, Amount, TotalValue")] Product product)
         {
             if (ModelState.IsValid)
@@ -68,6 +72,7 @@ namespace Mubak.Controllers
             return View(_ctxProduct.Products.First(ip => ip.Id == id));
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             var product = _ctxProduct.Products.First(ip => ip.Id == id);
@@ -76,6 +81,7 @@ namespace Mubak.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirm(int id)
         {
             var product = _ctxProduct.Products.First(ip => ip.Id == id);
