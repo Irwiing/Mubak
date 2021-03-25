@@ -81,6 +81,5 @@ namespace Mubak.Controllers
             _ctxSale.SaveChanges();
             return RedirectToAction("Index");
         }
-
     }
 }
