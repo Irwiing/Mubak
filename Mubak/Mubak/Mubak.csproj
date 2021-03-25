@@ -262,6 +262,7 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\WhatsappSale.js" />
     <Content Include="Styles\global.css" />
     <Content Include="Styles\product.css" />
     <Content Include="Web.config" />
