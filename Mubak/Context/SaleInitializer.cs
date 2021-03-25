@@ -7,7 +7,7 @@ namespace Context
 {
     public class SaleInitializer : DropCreateDatabaseIfModelChanges<SaleContext>
     {
-        protected override void Seed(SaleContext context)
+        /*protected override void Seed(SaleContext context)
         {
             var sales = new List<Sale>
             {
@@ -66,6 +66,6 @@ namespace Context
 
             sales.ForEach(s => context.Sales.Add(s));
             context.SaveChanges();
-        }
+        }*/
     }
 }
