@@ -13,7 +13,7 @@ namespace Model
 
         public decimal UnitaryValue { get; set; }
 
-        public int Amount { get; set; }
+        public int Amount { get; set; } = 1;
 
         public decimal TotalValue { get; set; }
 

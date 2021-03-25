@@ -10,7 +10,7 @@ namespace Context
 {
     class ProductInitializer : DropCreateDatabaseIfModelChanges<ProductContext>
     {
-        protected override void Seed(ProductContext context)
+       protected override void Seed(ProductContext context)
         {
             var products = new List<Product>
             {
