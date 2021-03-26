@@ -22,15 +22,15 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Product", null, new { @class = "nav-link" })</li>
                     @if (User.Identity.IsAuthenticated && HttpContext.Current.User.IsInRole("Admin")) { 
-                        <li class="nav-item">@Html.ActionLink("Criar Produtos", "Create", "Product", null, new { @class = "nav-link" })</li>
-                        <li class="nav-item">@Html.ActionLink("Criar Categoria", "Create", "Category", null, new { @class = "nav-link" })</li>
-                        <li class="nav-item">@Html.ActionLink("Lista de usuarios", "Index", "User", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Produtos", "Create", "Product", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Categoria", "Create", "Category", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Usuários", "Index", "User", null, new { @class = "nav-link" })</li>
                     }
                 </ul>
                 <div class="d-flex text-white">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <h3 class="pr-3">@(HttpContext.Current.User.Identity.Name)</h3>
+                        <h4 class="pr-3">@(HttpContext.Current.User.Identity.Name)</h4>
                         <h3>
                             @Html.ActionLink("Logout", "logout", "User", null, new { @class = "btn btn-dark" })
                         </h3>
