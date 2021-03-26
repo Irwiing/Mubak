@@ -100,7 +100,7 @@ namespace Mubak.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(User user, string returnUrl)
+        public ActionResult Login(User user)
         {
             var checkedUser = _serviceUser.CheckUser(user);
 
