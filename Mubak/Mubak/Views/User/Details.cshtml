@@ -7,68 +7,107 @@
 <h2>Details</h2>
 
 <div>
-    <h4>User</h4>
+    <div class="d-flex justify-content-around">
+        <h4>User</h4>
+        <div>
+            <h4>Endereços</h4>
+            @Html.ActionLink("Cadastrar endereço", "Create", "Address", null ,new { @class = "btn btn-success" })
+        </div>
+    </div>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Situation)
-        </dt>
+    <div class="d-flex justify-content-around">
+        <dl class="dl-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Situation)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Login)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Login)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Login)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Login)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CPF)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CPF)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CPF)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.CPF)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Permission)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Permission)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Permission)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Permission)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+        </dl>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+        @foreach (var item in Model.Address)
+        {
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(modelIem => item.Street)
+                </dt>
 
-    </dl>
+                <dd>
+                    @Html.DisplayFor(modelIem => item.Street)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(modelIem => item.Neighborhood)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelIem => item.Neighborhood)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(modelIem => item.Locale)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelIem => item.Locale)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(modelIem => item.Region)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelIem => item.Region)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(modelIem => item.ZipCode)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelIem => item.ZipCode)
+                </dd>
+
+            </dl>
+        }
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
 </p>
