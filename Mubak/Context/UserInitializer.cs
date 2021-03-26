@@ -10,8 +10,8 @@ namespace Context
         {
             var users = new List<User>
             {
-                new User {Login = "admin", Password = "admin", Permission = "Administrator", Name = "Irwing", Situation = "ativo"},
-                new User {Login = "user", Password = "user", Permission = "Customer", Name = "Hugo", Situation = "ativo"}
+                new User {Login = "admin", Password = "admin", Permission = "Admin", Name = "Irwing", Situation = "ativo"},
+                
             };
 
             users.ForEach(user => context.Users.Add(user));

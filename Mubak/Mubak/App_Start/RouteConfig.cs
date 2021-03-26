@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace Mubak
 {
@@ -16,8 +17,9 @@ namespace Mubak
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Product", action = "Showcase", id = UrlParameter.Optional }
             );
+            
         }
     }
 }

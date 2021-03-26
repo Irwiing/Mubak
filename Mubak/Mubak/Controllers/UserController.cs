@@ -28,6 +28,14 @@ namespace Mubak.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(user.Login == "admin")
+                {
+                    user.Permission = "Admin";
+                }
+                else
+                {
+                    user.Permission = "Usuario";
+                }
                 _ctxUser.Users.Add(user);
                 _ctxUser.SaveChanges();
                 return RedirectToAction("Index");
@@ -63,10 +71,10 @@ namespace Mubak.Controllers
             }
             return View(user);
         }
-        [Authorize(Roles = "Admin")]
-        public ActionResult Details(int id)
+        [Authorize]
+        public ActionResult Details(string login)
         {
-            return View(_ctxUser.Users.First(u => u.Id == id));
+            return View(_ctxUser.Users.First(u => u.Login == login));
         }
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
@@ -99,12 +107,7 @@ namespace Mubak.Controllers
             if (checkedUser != null)
             {
                 FormsAuthentication.SetAuthCookie(checkedUser.Login, false);
-                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
-                    && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
-                {
-                    return Redirect(returnUrl);
-                }
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Showcase", "Product");
             }
             ModelState.AddModelError("", "Invalid User/Password");
             return View();
